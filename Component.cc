@@ -1,3 +1,5 @@
+#include "Component.h"
+
 Component::Component(int x, int y): xPos(x), yPos(y) {}
 
 int Component::getXpos() {
@@ -12,3 +14,5 @@ void Component::setXpos(int x) {
 void Component::setYpos(int y) {
 	yPos = y;
 }
+
+Component::~Component() {}

@@ -11,10 +11,10 @@ class Goblin;
 class Player;
 
 class Enemy : public Character {
-private:
+public:
 	Enemy(int x, int y, int HP, int atk, int def);
 
-	virtual void getAttacked(Shade sp) = 0;
+	virtual void getAttacked(Shade *p) = 0;
 	virtual void getAttacked(Drow *p) = 0;
 	virtual void getAttacked(Vampire *p) = 0;
 	virtual void getAttacked(Troll *p) = 0;

@@ -1,7 +1,7 @@
 #include "Items.h"
 
 // ================== Potion
-Potion::Potion(int x, int y, string type): Component(x, y) Type(type) {
+Potion::Potion(int x, int y, string type): Component(x, y), Type(type) {
 	if (type == "RH") {	//Restore health
 		HP = 10;
 		Atk = 0;
@@ -58,13 +58,13 @@ void Potion::takePotion(Player *p) {
 	}
 }
 
-Potion::~Potion();
+Potion::~Potion() {}
 
 
 // ================= Gold
 Gold::Gold(int x, int y, int gold): Component(x, y) {
 	amount = gold;
-	Guard = NULL;
+	guard = NULL;
 
 	if (amount != 6) {	// is a hoard guarded by a dragon
 		Guarded = false;
@@ -81,7 +81,7 @@ int Gold::getAmount() {
 	return amount;
 }
 
-bool Gold::isGaurded() {
+bool Gold::isGuarded() {
 	return Guarded;
 }
 void Gold::releaseGuard() {
@@ -121,7 +121,7 @@ char Tile::getItem() {
 }
 
 bool Tile::isSteppable() {
-	if (item != '.' && item != "+" && item != '#') {
+	if (item != '.' && item != '+' && item != '#') {
 		return false;
 	} else {
 		return true;
@@ -136,4 +136,4 @@ bool Tile::isTaken() {
 	}
 }
 
-~Tile();
+Tile::~Tile() {}

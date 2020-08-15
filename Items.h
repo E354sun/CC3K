@@ -37,7 +37,7 @@ public:
 	string getRace();
 	int getAmount();
 
-	bool isGaurded();
+	bool isGuarded();
 	void releaseGuard();
 	Dragon *getGuard();
 	void setGuard(Dragon *dragon);

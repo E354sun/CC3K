@@ -41,17 +41,5 @@ void Character::resetDef() {
 	curDef = maxDef;
 }
 
-/* move the Character (change Character's position) */
-void Character::setPos(int x, int y) {
-	xPos = x;
-	yPos = y;
-}
-int Character::getXpos() {
-	return xPos;
-}
-int Character::getYpos() {
-	return yPos;
-}
-
 /* Desturctor */
 Character::~Character() {}

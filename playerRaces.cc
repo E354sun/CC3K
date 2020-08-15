@@ -1,6 +1,7 @@
+#include <cmath>
 #include "playerRaces.h"
 #include "enemyRaces.h"
-#include "definations.h"
+#include "definitions.h"
 using namespace std;
 
 /* =========== Player races =========== */

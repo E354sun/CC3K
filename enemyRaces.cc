@@ -1,6 +1,8 @@
+#include <cmath>
 #include "playerRaces.h"
 #include "enemyRaces.h"
-#include "definations.h"
+#include "definitions.h"
+#include "Items.h"
 using namespace std;
 
 // ============= Human
@@ -261,4 +263,4 @@ void Dragon::spawnHoard() {
 	hoard->releaseGuard();
 }
 
-~Dragon();
+Dragon::~Dragon() {}

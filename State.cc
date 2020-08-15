@@ -19,7 +19,7 @@ bool Engine::move(Map *map, Player *player, int x, int y) {
 				player->pickupGold(g->getAmount());
 			}
 		} else {
-			reutrn false;
+			return false;
 		}
 	}
 
@@ -32,7 +32,7 @@ bool Engine::move(Map *map, Player *player, int x, int y) {
 }
 
 void Engine::moveRandom(Map *map, Enemy *enemy) {
-	int rand;
+	int randInt;
 	vector<pair<int, int>> Tiles;
 	Tiles.push_back(make_pair(-1, -1));
     Tiles.push_back(make_pair(-1, 1));
@@ -45,10 +45,10 @@ void Engine::moveRandom(Map *map, Enemy *enemy) {
     int x = enemy->getXpos();
     int y = enemy->getYpos();
 
-    while (rand = rand()%9) {
-    	if (rand < 8) {
-    		int randX = x + Tiles.at(i).first;
-    		int randY = y + Tiles.at(i).second;
+    while (randInt = rand()%9) {
+    	if (randInt < 8) {
+    		int randX = x + Tiles.at(randInt).first;
+    		int randY = y + Tiles.at(randInt).second;
     		if (move(map, enemy, randX, randY)) {
     			break;
     		}
@@ -74,7 +74,7 @@ State::State(Map *map, Player *player): map(map), player(player) {}
 
 
 void State::update() {
-	extern bool isisDead;
+	extern bool isDead;
 
 	for (int x=0; x<25; x++) {
 		for (int y=0; y<79; y++) {
@@ -123,7 +123,7 @@ void State::update() {
     						randX = x + Tiles.at(i).first;
     						randY = y + Tiles.at(i).second;
     						if (map->isTaken(randX, randY) 
-    							&& map->getComponent(ranX, randY) == player) {
+    							&& map->getComponent(randX, randY) == player) {
     							enemy->Attack(player);
     							break;
     						} else if (i == 7 && enemy->getRace() != "Dragon") {
@@ -134,7 +134,7 @@ void State::update() {
 				}	
 
 				Gold *gold;
-				gold = dynamic_cast<Gold*>(map->getComponent(i,j));
+				gold = dynamic_cast<Gold *>(map->getComponent(x, y));
 				if (gold) {
 					if (gold->isGuarded() == true) {
 						vector<pair<int, int>> Tiles;
@@ -154,8 +154,8 @@ void State::update() {
     						randX = x + Tiles.at(i).first;
     						randY = y + Tiles.at(i).second;
     						if (map->isTaken(randX, randY) 
-    							&& map->getComponent(ranX, randY) == player) {
-    							gold->getGuard()->->Attack(player);
+    							&& map->getComponent(randX, randY) == player) {
+    							gold->getGuard()->Attack(player);
     							break;
     						}
     					}

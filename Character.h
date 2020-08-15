@@ -32,11 +32,6 @@ public:
 	void resetAtk();
 	void resetDef();
 
-	/* move the Character (change Character's position) */
-	void setPos(int x, int y);
-	int getXpos();
-	int getYpos();
-
 	/* Desturctor */
 	virtual ~Character();
 };

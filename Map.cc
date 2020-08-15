@@ -113,7 +113,7 @@ Component *Map::getComponent(int x, int y) {
 }
 
 void Map::setComponent(Component *c, int x, int y) {
-	floor[x][y]->setComponent(e);
+	floor[x][y]->setComponent(c);
 }
 
 void Map::displayMap() {
@@ -197,7 +197,7 @@ void Map::spawnItemRandom(Component *c) {
 
     
     Gold *hoard = dynamic_cast<Gold*>(c);
-    if (c && c->getAmount() == 6) {
+    if (hoard && hoard->getAmount() == 6) {
     	vector<pair<int, int>> Tiles;
     	Tiles.push_back(make_pair(-1, -1));
     	Tiles.push_back(make_pair(-1, 1));
@@ -208,16 +208,16 @@ void Map::spawnItemRandom(Component *c) {
     	Tiles.push_back(make_pair(0, -1));
     	Tiles.push_back(make_pair(0, 1));
 
-    	int rand;
+    	int randInt;
     	int randX;
     	int randY;
 
     	// what if all 8 connected ceils are full?
 
     	do {
-    		rand = rand()%8;
-    		randX = x + Tiles.at(rand).first;
-    		randY = y + Tiles.at(rand).second;
+    		randInt = rand()%8;
+    		randX = x + Tiles.at(randInt).first;
+    		randY = y + Tiles.at(randInt).second;
     	} while (isTaken(randX, randY) || 
     					floor[randX][randY]->isTaken());
 
@@ -333,7 +333,7 @@ void Status::update() {
 	Gold = player->getGold();
 }
 
-voif Status::display() {
+void Status::display() {
 	update();
 	map->displayMap();
 	cout << "Race: " << Race;
