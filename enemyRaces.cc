@@ -230,8 +230,11 @@ void Merchant::Attack(Player *p) {
 Merchant::~Merchant() {}
 
 // ================ Dragon
+
 Dragon::Dragon(int x, int y, Gold *hoard): 
-	Enemy(x, y, DRAGON_HP, DRAGON_ATK, DRAGON_DEF), hoard(hoard) {}
+	Enemy(x, y, DRAGON_HP, DRAGON_ATK, DRAGON_DEF){}
+
+	//Enemy(x, y, DRAGON_HP, DRAGON_ATK, DRAGON_DEF), hoard(hoard) {}
 
 string getRace() {
 	return DRAGON_RACE;
@@ -264,3 +267,4 @@ void Dragon::spawnHoard() {
 }
 
 Dragon::~Dragon() {}
+

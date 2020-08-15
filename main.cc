@@ -52,12 +52,12 @@ enum raceCode {
 };
 
 raceCode hashRace (string const& inString) {
-    if (inString == "S") return S;
-    if (inString == "D") return D;
-    if (inString == "V") return V;
-    if (inString == "T") return T;
-    if (inString == "G") return G;
-    if (inString == "Q") return Q;
+    if (inString == "s") return S;
+    if (inString == "d") return D;
+    if (inString == "v") return V;
+    if (inString == "t") return T;
+    if (inString == "g") return G;
+    if (inString == "q") return Q;
 }
 
 int numOfE = 20; 
@@ -74,12 +74,12 @@ int main() {
 
 		cout << "Welcome to the game of ChamberCrawler3000" << endl;
 		cout << "Please choose the race of your hero:" << endl;
-		cout << "(S)hade: 125 HP, 25 Atk, 25 Def" << endl;
-    	cout << "(D)row: 150 HP, 25 Atk, 15 Def, Potion Talent" << endl;
-    	cout << "(V)ampire: 50 HP, 25 Atk, 25 Def, Gain HP by Successful Attacks" << endl;
-    	cout << "(T)roll: 120 HP, 25 Atk, 15 Def, Gain HP Every Single Turn" << endl;
-    	cout << "(G)oblin: 110 HP, 15 Atk, 20 Def, Clever Thieves" << endl;
-    	cout << "Please enter the one you like, or enter Q to leave" << endl;
+		cout << "(s)hade: 125 HP, 25 Atk, 25 Def" << endl;
+    	cout << "(d)row: 150 HP, 25 Atk, 15 Def, Potion Talent" << endl;
+    	cout << "(v)ampire: 50 HP, 25 Atk, 25 Def, Gain HP by Successful Attacks" << endl;
+    	cout << "(t)roll: 120 HP, 25 Atk, 15 Def, Gain HP Every Single Turn" << endl;
+    	cout << "(g)oblin: 110 HP, 15 Atk, 20 Def, Clever Thieves" << endl;
+    	cout << "Please enter the one you like, or enter q to leave" << endl;
 
     	bool inputValid = false;
     	while (!inputValid) {
@@ -103,7 +103,7 @@ int main() {
     					  inputValid = true;
     					  break;
     			case G: cout << "Your hero is a Goblin now!" << endl;
-    					  hero = new Troll(5, 5);
+    					  hero = new Goblin(5, 5);
     					  inputValid = true;
     					  break;
     			case Q: cout << "Thank you!" << endl;
@@ -134,26 +134,6 @@ int main() {
 
     			int playerXpos = hero->getXpos();
     			int playerYpos = hero->getYpos();
-
-    			switch (hashit(command)) {
-    				case no: Engine::move(map, hero, playerXpos-1, playerYpos);
-    						   break;
-    				case so: Engine::move(map, hero, playerXpos+1, playerYpos);
-    						   break;
-    				case ea: Engine::move(map, hero, playerXpos, playerYpos+1);
-    						   break;
-    				case we: Engine::move(map, hero, playerXpos, playerYpos-1);
-    						   break;
-    				case ne: Engine::move(map, hero, playerXpos-1, playerYpos+1);
-    						   break;
-    				case nw: Engine::move(map, hero, playerXpos-1, playerYpos-1);
-    						   break;
-    				case se: Engine::move(map, hero, playerXpos+1, playerYpos+1);
-    						   break;
-    				case sw: Engine::move(map, hero, playerXpos+1, playerYpos-1);
-    						   break;
-    				default:   break;
-    			}
 
     			if (command == "u") {
     				cin >> command;
@@ -338,7 +318,26 @@ int main() {
     			}
 
     			else {
-    				cout << "Oops, I cannot recognize your command!" << endl;
+                    switch (hashit(command)) {
+                    case no: Engine::move(map, hero, playerXpos-1, playerYpos);
+                               break;
+                    case so: Engine::move(map, hero, playerXpos+1, playerYpos);
+                               break;
+                    case ea: Engine::move(map, hero, playerXpos, playerYpos+1);
+                               break;
+                    case we: Engine::move(map, hero, playerXpos, playerYpos-1);
+                               break;
+                    case ne: Engine::move(map, hero, playerXpos-1, playerYpos+1);
+                               break;
+                    case nw: Engine::move(map, hero, playerXpos-1, playerYpos-1);
+                               break;
+                    case se: Engine::move(map, hero, playerXpos+1, playerYpos+1);
+                               break;
+                    case sw: Engine::move(map, hero, playerXpos+1, playerYpos-1);
+                               break;
+                    default: cout << "Oops, I cannot recognize your command!" << endl;
+                                break;
+                            }
     			}
 
     			state->update();

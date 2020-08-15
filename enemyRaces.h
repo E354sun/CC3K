@@ -122,7 +122,7 @@ public:
 	void Attack(Player *p);
 	void spawnHoard();
 
-	~Dragon();
+	virtual ~Dragon();
 };
 
 

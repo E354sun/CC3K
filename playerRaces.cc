@@ -53,12 +53,14 @@ void Shade::getAttacked(Merchant *e) {
 		setHP(getHP() - ceil(100.0/(100.0+(double)getDef())*(double)e->getAtk()));
 	}
 }
+
 void Shade::getAttacked(Dragon *e) {
 	int chance = rand() % 100;
 	if (chance < 50) {
 		setHP(getHP() - ceil(100.0/(100.0+(double)getDef())*(double)e->getAtk()));
 	}
 }
+
 
 void Shade::Attack(Enemy *e) {
 	e->getAttacked(this);
@@ -110,12 +112,14 @@ void Drow::getAttacked(Merchant *e) {
 		setHP(getHP() - ceil(100.0/(100.0+(double)getDef())*(double)e->getAtk()));
 	}
 }
+
 void Drow::getAttacked(Dragon *e) {
 	int chance = rand() % 100;
 	if (chance < 50) {
 		setHP(getHP() - ceil(100.0/(100.0+(double)getDef())*(double)e->getAtk()));
 	}
 }
+
 
 void Drow::Attack(Enemy *e) {
 	e->getAttacked(this);
@@ -171,12 +175,14 @@ void Vampire::getAttacked(Merchant *e) {
 		setHP(getHP() - ceil(100.0/(100.0+(double)getDef())*(double)e->getAtk()));
 	}
 }
+
 void Vampire::getAttacked(Dragon *e) {
 	int chance = rand() % 100;
 	if (chance < 50) {
 		setHP(getHP() - ceil(100.0/(100.0+(double)getDef())*(double)e->getAtk()));
 	}
 }
+
 
 void Vampire::Attack(Enemy *e) {
 	e->getAttacked(this);
@@ -232,12 +238,14 @@ void Troll::getAttacked(Merchant *e) {
 		setHP(getHP() - ceil(100.0/(100.0+(double)getDef())*(double)e->getAtk()));
 	}
 }
+
 void Troll::getAttacked(Dragon *e) {
 	int chance = rand() % 100;
 	if (chance < 50) {
 		setHP(getHP() - ceil(100.0/(100.0+(double)getDef())*(double)e->getAtk()));
 	}
 }
+
 
 void Troll::Attack(Enemy *e) {
 	e->getAttacked(this);
@@ -300,12 +308,15 @@ void Goblin::getAttacked(Merchant *e) {
 		setHP(getHP() - ceil(100.0/(100.0+(double)getDef())*(double)e->getAtk()));
 	}
 }
+
+
 void Goblin::getAttacked(Dragon *e) {
 	int chance = rand() % 100;
 	if (chance < 50) {
 		setHP(getHP() - ceil(100.0/(100.0+(double)getDef())*(double)e->getAtk()));
 	}
 }
+
 
 void Goblin::Attack(Enemy *e) {
 	e->getAttacked(this);

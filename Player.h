@@ -33,7 +33,7 @@ public:
 
 	virtual void Attack(Enemy *e) = 0;
 
-	~Player();
+	virtual ~Player();
 };
 
 #endif

@@ -33,12 +33,16 @@ void Map::loadMap() {
 	while (numLines < 25) {
 		string line;
 		getline(mapFile, line);
+
 		int n = line.length();
 		char components[n+1];
 		strcpy(components, line.c_str());
 		for (int i=0; i<79; ++ i) {
-			floor[numLines][i] = new Tile(components[i], numLines, i);
+			floor[numLines][i] = new Tile(numLines, i, components[i]);
+			cout << floor[numLines][i]->getItem();
 		}
+
+		cout << endl;
 		numLines += 1;
 	}
     
@@ -53,7 +57,7 @@ void Map::loadMap() {
 	chamber[1] = new Tile *[21*7];
 	for (int i=0; i<7; i++) {
 		for (int j=0; j<21; j++) {
-			chamber[3][(21*i)+j] = floor[i+15][j+4];
+			chamber[1][(21*i)+j] = floor[i+15][j+4];
 		}
 	}
 
@@ -62,19 +66,19 @@ void Map::loadMap() {
 	while (numLines < 10) {
 		if (numLines < 2) {
 			for (int j=0; j<23; j++) {
-				chamber[1][(numLines*23)+j] = floor[numLines+3][j+39];
+				chamber[2][(numLines*23)+j] = floor[numLines+3][j+39];
 			}
 		} else if (numLines == 2) {
 			for (int j=0; j<31; j++) {
-				chamber[1][(numLines*23)+j] = floor[numLines+3][j+39];
+				chamber[2][(numLines*23)+j] = floor[numLines+3][j+39];
 			}
 		} else if (numLines == 3) {
 			for (int j=0; j<34; j++) {
-				chamber[1][(numLines*23)+8+j] = floor[numLines+3][j+39];
+				chamber[2][(numLines*23)+8+j] = floor[numLines+3][j+39];
 			}
 		} else {
 			for (int j=0; j<15; j++) {
-				chamber[1][(numLines*15)+16+19+16+j] = floor[numLines+3][j+61];
+				chamber[2][(numLines*15)+16+19+16+j] = floor[numLines+3][j+61];
 			}
 		}
 
@@ -84,7 +88,7 @@ void Map::loadMap() {
 	chamber[3] = new Tile *[12*6];
 	for (int i=0; i<3; i++) {
 		for (int j=0; j<12; j++) {
-			chamber[2][(12*i)+j] = floor[i+10][j+38];
+			chamber[3][(12*i)+j] = floor[i+10][j+38];
 		}
 	} 
 
@@ -145,8 +149,8 @@ void Map::displayMap() {
 					cout << "O";
 				} else if (race == "Merchant") {
 					cout << "M";
-				} else if (race == "Dragon") {
-					cout << "D";
+				// } else if (race == "Dragon") {
+				//	cout << "D";
 				} else {
 					cout << "@";
 				}
@@ -197,6 +201,7 @@ void Map::spawnItemRandom(Component *c) {
 
     
     Gold *hoard = dynamic_cast<Gold*>(c);
+
     if (hoard && hoard->getAmount() == 6) {
     	vector<pair<int, int>> Tiles;
     	Tiles.push_back(make_pair(-1, -1));
@@ -227,10 +232,11 @@ void Map::spawnItemRandom(Component *c) {
 
     	numOfE --;
     }
+
 }
 
 void Map::start(Player *hero) {
-	srand(time(NULL));
+	// srand(time(NULL));
 	const int numTile[5] = {104, 147, 201, 36, 150};
 
 	int randChamber = rand()%5;
@@ -239,6 +245,7 @@ void Map::start(Player *hero) {
 	int playerYpos = chamber[randChamber][randTile]->getYpos();
 
 	spawnItem(playerXpos, playerYpos, hero);	// player
+
 	hero->setXpos(playerXpos);
 	hero->setYpos(playerYpos);
 

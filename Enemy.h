@@ -22,7 +22,7 @@ public:
 
 	virtual void Attack(Player *p) = 0;
 
-	~Enemy();
+	virtual ~Enemy();
 };
 
 #endif

@@ -16,12 +16,14 @@ public:
 	string getRace();
 	int getAmount();
 
+	
 	bool isGuarded();
 	void releaseGuard();
 	Dragon *getGuard();
 	void setGuard(Dragon *dragon);
+	
 
-	~Gold();
+	virtual ~Gold();
 };
 
 #endif

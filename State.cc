@@ -14,11 +14,13 @@ bool Engine::move(Map *map, Player *player, int x, int y) {
 	} else if (map->isTaken(x, y)) {
 		if (map->getComponent(x, y)->getRace() == "Gold") {
 			Gold *g = dynamic_cast<Gold *> (map->getComponent(x, y));
+
 			if (g->isGuarded()) {
 				return false;
 			} else {
 				player->pickupGold(g->getAmount());
 			}
+
 		} else {
 			return false;
 		}
@@ -62,7 +64,7 @@ void Engine::moveRandom(Map *map, Enemy *enemy) {
 }
 
 bool Engine::move(Map *map, Enemy *enemy, int x, int y) {
-	if (map->floor[x][y]->isTaken() || map->isTaken(x, y)) {
+	if (!(map->floor[x][y]->isTaken() && !map->isTaken(x, y))) {
 		return false;
 	} else {
 		map->removeItem(enemy->getXpos(), enemy->getYpos());
@@ -77,7 +79,7 @@ State::State(Map *map, Player *player): map(map), player(player) {}
 
 
 void State::update() {
-	extern bool isDead;
+	extern bool dead;
 
 	for (int x=0; x<25; x++) {
 		for (int y=0; y<79; y++) {
@@ -87,10 +89,13 @@ void State::update() {
 				if (enemy) {
 					string race = enemy->getRace();
 					if (enemy->getHP() <= 0) {
+						/*
 						if (race == "Dragon") {
 							Dragon *dragon = dynamic_cast<Dragon*> (enemy);
 							dragon->spawnHoard();
-						} else if (race == "Human" || race == "Merchant") {
+						} else 
+						*/
+						if (race == "Human" || race == "Merchant") {
 							player->pickupGold(4);
 						} else {
 							int randInt = rand()%100;
@@ -129,13 +134,15 @@ void State::update() {
     							&& map->getComponent(randX, randY) == player) {
     							enemy->Attack(player);
     							break;
-    						} else if (i == 7 && enemy->getRace() != "Dragon") {
+    						// } else if (i == 7 && enemy->getRace() != "Dragon") {
+    						} else if (i == 7) {
     							Engine::moveRandom(map, enemy);
     						}
     					}
 					}
 				}	
 
+				/*
 				Gold *gold;
 				gold = dynamic_cast<Gold *>(map->getComponent(x, y));
 				if (gold) {
@@ -164,12 +171,13 @@ void State::update() {
     					}
     				}
     			}
+    			*/
     		}
     	}
 	}
 
 	if (player->getHP() <= 0) {
-		isDead = true;
+		dead = true;
 		return;
 	}
 }

@@ -62,10 +62,8 @@ Potion::~Potion() {}
 
 
 // ================= Tile
-Tile::Tile(int x, int y, char item) {
-	xPos = x;
-	yPos = y;
-	item = item;
+Tile::Tile(int x, int y, char item): xPos(x), yPos(y), item(item) {
+	component = NULL;
 }
 
 int Tile::getXpos() {

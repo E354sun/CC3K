@@ -3,6 +3,7 @@
 // ================= Gold
 Gold::Gold(int x, int y, int gold): Component(x, y) {
 	amount = gold;
+
 	guard = NULL;
 
 	if (amount != 6) {	// is a hoard guarded by a dragon
@@ -20,6 +21,7 @@ int Gold::getAmount() {
 	return amount;
 }
 
+
 bool Gold::isGuarded() {
 	return Guarded;
 }
@@ -32,5 +34,6 @@ Dragon *Gold::getGuard() {
 void Gold::setGuard(Dragon *dragon) {
 	guard = dragon;
 }
+
 
 Gold::~Gold() {}
