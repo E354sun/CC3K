@@ -11,6 +11,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "Items.h"
+#include "Treasure.h"
 #include "enemyRaces.h"
 
 using namespace std;

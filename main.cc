@@ -9,6 +9,7 @@
 #include "Enemy.h"
 #include "playerRaces.h"
 #include "enemyRaces.h"
+#include "Treasure.h"
 #include "State.h"
 using namespace std;
 

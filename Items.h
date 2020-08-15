@@ -2,7 +2,6 @@
 #define __ITEMS_H__
 #include "Component.h"
 #include <cstddef>
-#include "enemyRaces.h"
 #include "playerRaces.h"
 
 class Potion : public Component {
@@ -23,26 +22,6 @@ public:
 	void takePotion(Player *p);
 
 	~Potion();
-};
-
-class Gold : public Component {
-private:
-	int amount;
-	bool Guarded;
-
-	Dragon *guard;
-
-public:
-	Gold(int x, int y, int gold);
-	string getRace();
-	int getAmount();
-
-	bool isGuarded();
-	void releaseGuard();
-	Dragon *getGuard();
-	void setGuard(Dragon *dragon);
-
-	~Gold();
 };
 
 class Tile {

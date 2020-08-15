@@ -1,7 +1,7 @@
 CXX = g++
 CXXFLAGS = -std=c++14
 EXEC = cc3k
-OBJECTS = main.o Map.o Component.o Items.o Character.o Player.o Enemy.o enemyRaces.o playerRaces.o State.o 
+OBJECTS = main.o Map.o Component.o Character.o Items.o Player.o Enemy.o enemyRaces.o playerRaces.o Treasure.o State.o 
 DEPENDS = ${OBJECTS:.o=.d}
 
 ${EXEC}: ${OBJECTS}

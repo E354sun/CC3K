@@ -1,4 +1,5 @@
 #include "State.h"
+#include "Treasure.h"
 #include "enemyRaces.h"
 #include "Items.h"
 #include <utility>
@@ -32,7 +33,7 @@ bool Engine::move(Map *map, Player *player, int x, int y) {
 }
 
 void Engine::moveRandom(Map *map, Enemy *enemy) {
-	int randInt;
+	int randInt = rand()%9;
 	vector<pair<int, int>> Tiles;
 	Tiles.push_back(make_pair(-1, -1));
     Tiles.push_back(make_pair(-1, 1));
@@ -45,7 +46,7 @@ void Engine::moveRandom(Map *map, Enemy *enemy) {
     int x = enemy->getXpos();
     int y = enemy->getYpos();
 
-    while (randInt = rand()%9) {
+    while (true) {
     	if (randInt < 8) {
     		int randX = x + Tiles.at(randInt).first;
     		int randY = y + Tiles.at(randInt).second;
@@ -55,6 +56,8 @@ void Engine::moveRandom(Map *map, Enemy *enemy) {
     	} else {
     		break;
     	}
+
+    	randInt = rand()%9;
     }
 }
 

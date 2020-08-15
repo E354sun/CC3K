@@ -2,7 +2,7 @@
 #include "playerRaces.h"
 #include "enemyRaces.h"
 #include "definitions.h"
-#include "Items.h"
+#include "Treasure.h"
 using namespace std;
 
 // ============= Human
