@@ -19,7 +19,7 @@ int floorNum;
 int stairR;
 int stairC;
 
-enum dir {
+enum dirCode {
     no,
     so,
     ea,
@@ -30,7 +30,7 @@ enum dir {
     sw
 };
 
-dir hashit (string const& inString) {
+dirCode hashit (string const& inString) {
     if (inString == "no") return no;
     if (inString == "so") return so;
     if (inString == "ea") return ea;
@@ -39,6 +39,24 @@ dir hashit (string const& inString) {
     if (inString == "nw") return nw;
     if (inString == "se") return se;
     if (inString == "sw") return sw;
+}
+
+enum raceCode {
+    S,
+    D,
+    V,
+    T,
+    G,
+    Q
+};
+
+raceCode hashRace (string const& inString) {
+    if (inString == "S") return S;
+    if (inString == "D") return D;
+    if (inString == "V") return V;
+    if (inString == "T") return T;
+    if (inString == "G") return G;
+    if (inString == "Q") return Q;
 }
 
 int numOfE = 20; 
@@ -66,28 +84,28 @@ int main() {
     	while (!inputValid) {
     		cin >> command;
 
-    		switch (command) {
-    			case "S": cout << "Your hero is a Shade now!" << endl;
+    		switch (hashRace(command)) {
+    			case S: cout << "Your hero is a Shade now!" << endl;
     					  hero = new Shade(5, 5);
     					  inputValid = true;
     					  break;
-    			case "D": cout << "Your hero is a Drow now!" << endl;
+    			case D: cout << "Your hero is a Drow now!" << endl;
     					  hero = new Drow(5, 5);
     					  inputValid = true;
     					  break;
-    			case "V": cout << "Your hero is a Vampire now!" << endl;
+    			case V: cout << "Your hero is a Vampire now!" << endl;
     					  hero = new Vampire(5, 5);
     					  inputValid = true;
     					  break;
-    			case "T": cout << "Your hero is a Troll now!" << endl;
+    			case T: cout << "Your hero is a Troll now!" << endl;
     					  hero = new Troll(5, 5);
     					  inputValid = true;
     					  break;
-    			case "G": cout << "Your hero is a Goblin now!" << endl;
+    			case G: cout << "Your hero is a Goblin now!" << endl;
     					  hero = new Troll(5, 5);
     					  inputValid = true;
     					  break;
-    			case "q": cout << "Thank you!" << endl;
+    			case Q: cout << "Thank you!" << endl;
     					  start = false;
     					  break;
     			default:  cout << "Oops, it seems that you have chosen a mysterious race" << endl;
