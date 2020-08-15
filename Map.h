@@ -29,18 +29,18 @@ public:
 
 	void spawnItem(int x, int y, Component *c);
 	void removeItem(int x, int y);
-	void spawnItem(Tile *c, Component *c);
+	void spawnItem(Tile *t, Component *c);
 	void spawnItemRandom(Component *c);
 
 	void start(Player *hero);
 	~Map();
 };
 
-class Status() {
+class Status {
 private:
 	Player *player;
 	Map *map;
-	String Race;
+	string Race;
 	int Gold;
 	int HP;
 	int Atk;

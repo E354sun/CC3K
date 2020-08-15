@@ -1,5 +1,5 @@
-#ifndef _PLAYERRACES_H_
-#define _PLAYERRACES_H_
+#ifndef __PLAYERRACES_H__
+#define __PLAYERRACES_H__
 #include "Player.h"
 #include "Enemy.h"
 #include <string>
@@ -96,3 +96,5 @@ public:
 
 	~Goblin();
 };
+
+#endif

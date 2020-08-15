@@ -27,7 +27,7 @@ int main() {
 	while (start) {
 
 		Player *hero;
-		star = true;
+		start = true;
 		hostileMerchant = false;
 
 		cout << "Welcome to the game of ChamberCrawler3000" << endl;
@@ -290,7 +290,7 @@ int main() {
     			else if (command == "q") {
     				cout << "Thank you and goodbye!" << endl;
 					gameOn = false;
-					running = false;
+					start = false;
 					quit = true;
 					break;
     			}
@@ -309,11 +309,11 @@ int main() {
     			}
 
     			if (hero->getXpos() == stairR && hero->getYpos() == stairC) {
-    				map->remove(stairR, stairC);
+    				map->removeItem(stairR, stairC);
     				break;
     			}
 
-    			Troll *t = dynamic_cast<Troll *>(hero)
+    			Troll *t = dynamic_cast<Troll *>(hero);
     			if (t) {
     				t->Regain();
     			}
@@ -351,9 +351,9 @@ int main() {
 
 			if (command == "Y") {
 				cout << "Welcome back!" << endl;
-			} else if (cmd == "N") {
+			} else if (command == "N") {
 				cout << "Thank you!" << endl;
-				running = false;
+				start = false;
 				break;
 			} else {
 				cout << "Please enter Y or N" << endl;

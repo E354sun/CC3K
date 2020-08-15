@@ -1,5 +1,5 @@
-#ifndef _ENEMYRACES_H_
-#define _ENEMYRACES_H_
+#ifndef __ENEMYRACES_H__
+#define __ENEMYRACES_H__
 #include "Enemy.h"
 #include "Player.h"
 #include <string>

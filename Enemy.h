@@ -1,5 +1,5 @@
-#ifndef _ENEMY_H_
-#define _ENEMY_H_
+#ifndef __ENEMY_H__
+#define __ENEMY_H__
 #include "Character.h"
 
 class Shade;

@@ -157,17 +157,17 @@ void Map::displayMap() {
 	
 }
 
-void Map::spawnItem(Component *e, int r, int c) {
-	floor[r][c]->setComponent(e);
+void Map::spawnItem(int x, int y, Component *c) {
+	floor[x][y]->setComponent(c);
 }
 
-void Map::spawnItem(Component *e, Tile *c) {
-	c->setComponent(e);
+void Map::spawnItem(Tile *t, Component *c) {
+	t->setComponent(c);
 }
 
-void Map::removeItem(int r, int c) {
-	if (isTaken(r,c)) {
-		floor[r][c]->setComponent(NULL); 
+void Map::removeItem(int x, int y) {
+	if (isTaken(x, y)) {
+		floor[x][y]->setComponent(NULL); 
 	}
 }
 

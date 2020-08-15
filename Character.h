@@ -1,5 +1,5 @@
-#ifndef _CHARACTER_H_
-#define _CHARACTER_H_
+#ifndef __CHARACTER_H__
+#define __CHARACTER_H__
 #include "Component.h"
 
 class Character : public Component {
