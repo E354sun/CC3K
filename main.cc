@@ -18,6 +18,29 @@ bool hostileMerchant = false;
 int floorNum;
 int stairR;
 int stairC;
+
+enum dir {
+    no,
+    so,
+    ea,
+    we,
+    ne,
+    nw,
+    se,
+    sw
+};
+
+dir hashit (string const& inString) {
+    if (inString == "no") return no;
+    if (inString == "so") return so;
+    if (inString == "ea") return ea;
+    if (inString == "we") return we;
+    if (inString == "ne") return ne;
+    if (inString == "nw") return nw;
+    if (inString == "se") return se;
+    if (inString == "sw") return sw;
+}
+
 int numOfE = 20; 
 bool gameOn = true;
 bool dead = false;
@@ -64,7 +87,7 @@ int main() {
     					  hero = new Troll(5, 5);
     					  inputValid = true;
     					  break;
-    			case "Q": cout << "Thank you!" << endl;
+    			case "q": cout << "Thank you!" << endl;
     					  start = false;
     					  break;
     			default:  cout << "Oops, it seems that you have chosen a mysterious race" << endl;
@@ -93,30 +116,30 @@ int main() {
     			int playerXpos = hero->getXpos();
     			int playerYpos = hero->getYpos();
 
-    			switch (command) {
-    				case "no": Engine::move(map, hero, playerXpos-1, playerYpos);
+    			switch (hashit(command)) {
+    				case no: Engine::move(map, hero, playerXpos-1, playerYpos);
     						   break;
-    				case "so": Engine::move(map, hero, playerXpos+1, playerYpos);
+    				case so: Engine::move(map, hero, playerXpos+1, playerYpos);
     						   break;
-    				case "ea": Engine::move(map, hero, playerXpos, playerYpos+1);
+    				case ea: Engine::move(map, hero, playerXpos, playerYpos+1);
     						   break;
-    				case "we": Engine::move(map, hero, playerXpos, playerYpos-1);
+    				case we: Engine::move(map, hero, playerXpos, playerYpos-1);
     						   break;
-    				case "ne": Engine::move(map, hero, playerXpos-1, playerYpos+1);
+    				case ne: Engine::move(map, hero, playerXpos-1, playerYpos+1);
     						   break;
-    				case "nw": Engine::move(map, hero, playerXpos-1, playerYpos-1);
+    				case nw: Engine::move(map, hero, playerXpos-1, playerYpos-1);
     						   break;
-    				case "se": Engine::move(map, hero, playerXpos+1, playerYpos+1);
+    				case se: Engine::move(map, hero, playerXpos+1, playerYpos+1);
     						   break;
-    				case "sw": Engine::move(map, hero, playerXpos+1, playerYpos-1);
+    				case sw: Engine::move(map, hero, playerXpos+1, playerYpos-1);
     						   break;
     				default:   break;
     			}
 
     			if (command == "u") {
     				cin >> command;
-    				switch (command) {
-    					case "no": 
+    				switch (hashit(command)) {
+    					case no: 
     						if (map->isTaken(playerXpos-1, playerYpos)) {
     							Potion *potion;
     							potion = dynamic_cast<Potion *> (map->getComponent(playerXpos-1, playerYpos));
@@ -126,7 +149,7 @@ int main() {
     							}
     						}
     						break;
-    					case "so": 
+    					case so: 
     						if (map->isTaken(playerXpos+1, playerYpos)) {
     							Potion *potion;
     							potion = dynamic_cast<Potion *> (map->getComponent(playerXpos+1, playerYpos));
@@ -136,7 +159,7 @@ int main() {
     							}
     						}
     						break;
-    					case "ea": 
+    					case ea: 
     						if (map->isTaken(playerXpos, playerYpos+1)) {
     							Potion *potion;
     							potion = dynamic_cast<Potion *> (map->getComponent(playerXpos, playerYpos+1));
@@ -146,7 +169,7 @@ int main() {
     							}
     						}
     						break;
-    					case "we": 
+    					case we: 
     						if (map->isTaken(playerXpos, playerYpos-1)) {
     							Potion *potion;
     							potion = dynamic_cast<Potion *> (map->getComponent(playerXpos, playerYpos-1));
@@ -156,7 +179,7 @@ int main() {
     							}
     						}
     						break;
-    					case "ne": 
+    					case ne: 
     						if (map->isTaken(playerXpos-1, playerYpos+1)) {
     							Potion *potion;
     							potion = dynamic_cast<Potion *> (map->getComponent(playerXpos-1, playerYpos+1));
@@ -166,7 +189,7 @@ int main() {
     							}
     						}
     						break;
-    					case "nw": 
+    					case nw: 
     						if (map->isTaken(playerXpos-1, playerYpos-1)) {
     							Potion *potion;
     							potion = dynamic_cast<Potion *> (map->getComponent(playerXpos-1, playerYpos-1));
@@ -176,7 +199,7 @@ int main() {
     							}
     						}
     						break;
-    					case "se": 
+    					case se: 
     						if (map->isTaken(playerXpos+1, playerYpos+1)) {
     							Potion *potion;
     							potion = dynamic_cast<Potion *> (map->getComponent(playerXpos+1, playerYpos+1));
@@ -186,7 +209,7 @@ int main() {
     							}
     						}
     						break;
-    					case "sw": 
+    					case sw: 
     						if (map->isTaken(playerXpos+1, playerYpos-1)) {
     							Potion *potion;
     							potion = dynamic_cast<Potion *> (map->getComponent(playerXpos+1, playerYpos-1));
@@ -203,8 +226,8 @@ int main() {
     			else if (command == "a") {
     				cin >> command;
 
-    				switch (command) {
-    					case "no": 
+    				switch (hashit(command)) {
+    					case no: 
     						if (map->isTaken(playerXpos-1, playerYpos)) {
     							Enemy *enemy;
     							enemy = dynamic_cast<Enemy *> (map->getComponent(playerXpos-1, playerYpos));
@@ -213,7 +236,7 @@ int main() {
     							}
     						}
     						break;
-    					case "so": 
+    					case so: 
     						if (map->isTaken(playerXpos+1, playerYpos)) {
     							Enemy *enemy;
     							enemy = dynamic_cast<Enemy *> (map->getComponent(playerXpos+1, playerYpos));
@@ -222,7 +245,7 @@ int main() {
     							}
     						}
     						break;
-    					case "ea": 
+    					case ea: 
     						if (map->isTaken(playerXpos, playerYpos+1)) {
     							Enemy *enemy;
     							enemy = dynamic_cast<Enemy *> (map->getComponent(playerXpos, playerYpos+1));
@@ -231,7 +254,7 @@ int main() {
     							}
     						}
     						break;
-    					case "we": 
+    					case we: 
     						if (map->isTaken(playerXpos, playerYpos-1)) {
     							Enemy *enemy;
     							enemy = dynamic_cast<Enemy *> (map->getComponent(playerXpos, playerYpos-1));
@@ -240,7 +263,7 @@ int main() {
     							}
     						}
     						break;
-    					case "ne": 
+    					case ne: 
     						if (map->isTaken(playerXpos-1, playerYpos+1)) {
     							Enemy *enemy;
     							enemy = dynamic_cast<Enemy *> (map->getComponent(playerXpos-1, playerYpos+1));
@@ -249,7 +272,7 @@ int main() {
     							}
     						}
     						break;
-    					case "nw": 
+    					case nw: 
     						if (map->isTaken(playerXpos-1, playerYpos-1)) {
     							Enemy *enemy;
     							enemy = dynamic_cast<Enemy *> (map->getComponent(playerXpos-1, playerYpos-1));
@@ -258,7 +281,7 @@ int main() {
     							}
     						}
     						break;
-    					case "se": 
+    					case se: 
     						if (map->isTaken(playerXpos+1, playerYpos+1)) {
     							Enemy *enemy;
     							enemy = dynamic_cast<Enemy *> (map->getComponent(playerXpos+1, playerYpos+1));
@@ -267,7 +290,7 @@ int main() {
     							}
     						}
     						break;
-    					case "sw": 
+    					case sw: 
     						if (map->isTaken(playerXpos+1, playerYpos-1)) {
     							Enemy *enemy;
     							enemy = dynamic_cast<Enemy *> (map->getComponent(playerXpos+1, playerYpos-1));
