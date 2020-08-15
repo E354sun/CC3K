@@ -1,5 +1,5 @@
-#ifndef __ComponentS_H__
-#define __ComponentS_H__
+#ifndef __ITEMS_H__
+#define __ITEMS_H__
 #include "Component.h"
 #include <cstddef>
 #include "enemyRaces.h"
