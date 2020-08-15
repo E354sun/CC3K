@@ -236,7 +236,7 @@ Dragon::Dragon(int x, int y, Gold *hoard):
 
 	//Enemy(x, y, DRAGON_HP, DRAGON_ATK, DRAGON_DEF), hoard(hoard) {}
 
-string getRace() {
+string Dragon::getRace() {
 	return DRAGON_RACE;
 }
 
